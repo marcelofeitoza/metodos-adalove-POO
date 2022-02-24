@@ -12,23 +12,23 @@ class Car {
     brand,
     isRented
   ) {
-    this.licensePlate = licensePlate; // placa (AAA1A11)
-    this.color = color; // cor (red, blue, black, white, etc)
-    this.year = year; // ano de fabricação (2000, 2001, etc)
-    this.type = type; // tipo (sedan, hatch, etc)
-    this.doors = doors; // quantidade de portas (2, 4, etc)
-    this.mileage = mileage; // quilometragem (0, 100, etc)
-    this.chassis = chassis; // número de chassi (123456789, 987654321, etc)
-    this.rentalValue = rentalValue; // valor de locação (R$ 100, R$ 200, etc)
-    this.model = model; // modelo (modelo 1, modelo 2, etc)
-    this.brand = brand; // marca (marca 1, marca 2, etc)
+    this.licensePlate = licensePlate; // placa (AAA1A11) - string
+    this.color = color; // cor (red) - string
+    this.year = year; // ano de fabricação (2000) - number
+    this.type = type; // tipo (sedan) - string
+    this.doors = doors; // quantidade de portas (2) - string
+    this.mileage = mileage; // quilometragem (0) - number
+    this.chassis = chassis; // número de chassi (123456789) - number
+    this.rentalValue = rentalValue; // valor de locação (R$ 100) - string
+    this.model = model; // modelo (modelo 1) - string
+    this.brand = brand; // marca (marca 1) - string
 
-    this.isRented = {
-      isRented: isRented.isRented, // se está alugado (true, false)
-      rentedBy: isRented.rentedBy || undefined, // quem está alugando (nome do cliente)
-      rentalDate: isRented.rentalDate || undefined, // data de aluguel (dd/mm/aaaa:hh:mm)
-      returnedDate: isRented.returnedDate || undefined, // data de devolução (dd/mm/aaaa:hh:mm)
-      mileageTravelled: isRented.mileageTravelled || undefined, // quilometragem percorrida (0, 100, etc)
+    this.isRented = { // - object
+      isRented: isRented.isRented, // se está alugado (true, false) - boolean
+      rentedBy: isRented.rentedBy || undefined, // quem está alugando (nome do cliente) - string
+      rentalDate: isRented.rentalDate || undefined, // data de aluguel (dd/mm/aaaa:hh:mm) - string
+      returnedDate: isRented.returnedDate || undefined, // data de devolução (dd/mm/aaaa:hh:mm) - string
+      mileageTravelled: isRented.mileageTravelled || undefined, // quilometragem percorrida (0, 100, etc) - number
     }; // se está alugado ou não
   }
 
@@ -37,9 +37,9 @@ class Car {
    * @param {any} clientName
    */
   set rent(clientName, rentalDate) {
-    this.isRented.isRented = true;
-    this.isRented.rentedBy = clientName;
-    this.isRented.rentalDate = rentalDate;
+    this.isRented.isRented = true; // bool  
+    this.isRented.rentedBy = clientName; // string
+    this.isRented.rentalDate = rentalDate; // string
   }
 
   // método para devolver o carro
@@ -47,10 +47,10 @@ class Car {
    * @param {any} returnedDate
    */
   set returned(returnedDate) {
-    this.isRented.isRented = false;
-    this.isRented.returnedDate = returnedDate;
+    this.isRented.isRented = false; // bool
+    this.isRented.returnedDate = returnedDate; // string
     this.isRented.mileageTravelled =
-      this.mileage + this.isRented.mileageTravelled;
+      this.mileage + this.isRented.mileageTravelled; // number
   }
 
   // método para mostrar os dados do carro
@@ -143,5 +143,4 @@ cars.forEach((car) => {
   );
 
   console.log(newCar.data);
-  
 });
